@@ -16,11 +16,9 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <main className="font-DM">
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <App />
       <ToasterProvider />
     </ClerkProvider>
-    </main>
   </StrictMode>
 );
