@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "mockmentor"
-  }
+    "default": "mockmentor2025",
+    "production": "mockmentor2025"
+  },
+  "targets": {},
+  "etags": {}
 }
