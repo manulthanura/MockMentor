@@ -4,7 +4,7 @@ const AboutPage = () => {
   return (
     <div className="flex-col w-full pb-24">
       <Container>
-      <div className="flex flex-wrap items-center justify-between -mx-4">
+        <div className="flex flex-wrap items-center justify-between -mx-4">
             <div className="w-full px-4 lg:w-6/12">
               <div className="flex items-center -mx-3 sm:-mx-4">
                 <div className="w-full px-3 sm:px-4 xl:w-1/2">
@@ -631,7 +631,7 @@ const AboutPage = () => {
                 </a>
               </div>
             </div>
-          </div>
+        </div>
       </Container>
     </div>
   );

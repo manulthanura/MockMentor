@@ -16,7 +16,7 @@ import { MockInterviewPage } from "./routes/mock-interview-page";
 import { Feedback } from "./routes/feedback";
 import AboutPage from "./routes/about";
 import ContactPage from "./routes/contact";
-import ServicePage from "./routes/services";
+import ServicePage from "./routes/service";
 
 const App = () => {
   return (
@@ -26,8 +26,8 @@ const App = () => {
         <Route element={<PublicLayout />}>
           <Route index element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="services" element={<ServicePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/services" element={<ServicePage />} />
         </Route>
 
         {/* authentication layout */}
