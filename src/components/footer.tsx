@@ -1,119 +1,51 @@
 import React from "react";
-
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"; // Import Lucide icons
 import { Link } from "react-router-dom";
 import { Container } from "@/components/container";
 import { MainRoutes } from "@/lib/helpers";
-
-interface SocialLinkProps {
-  href: string;
-  icon: React.ReactNode;
-  hoverColor: string;
-}
-
-const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, hoverColor }) => {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`hover:${hoverColor}`}
-    >
-      {icon}
-    </a>
-  );
-};
 
 interface FooterLinkProps {
   to: string;
   children: React.ReactNode;
 }
 
+// Updated FooterLink to match the new style for a light background
 const FooterLink: React.FC<FooterLinkProps> = ({ to, children }) => {
   return (
-    <li>
+    <div className="px-5 py-2"> {/* Changed li to div as per example structure */}
       <Link
         to={to}
-        className="hover:underline text-gray-300 hover:text-gray-100"
+        className="text-base leading-6 text-gray-500 hover:text-gray-900"
       >
         {children}
       </Link>
-    </li>
+    </div>
   );
 };
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div className="w-full bg-black text-gray-300 hover:text-gray-100 py-8">
+    <section className="bg-white">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* First Column: Links */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {MainRoutes.map((route) => (
-                <FooterLink key={route.href} to={route.href}>
-                  {route.label}
-                </FooterLink>
-              ))}
-            </ul>
-          </div>
-
-          {/* Second Column: About Us */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">About Us</h3>
-            <p>
-              We are committed to helping you unlock your full potential with
-              AI-powered tools. Our platform offers a wide range of resources to
-              improve your interview skills and chances of success.
-            </p>
-          </div>
-
-          {/* Third Column: Services */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">Services</h3>
-            <ul>
-              <FooterLink to="/services/interview-prep">
-                Interview Preparation
+        <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+          <nav className="flex flex-wrap justify-center -mx-5 -my-2">
+            {MainRoutes.map((route) => (
+              <FooterLink key={route.href} to={route.href}>
+                {route.label}
               </FooterLink>
-              <FooterLink to="/services/career-coaching">
-                Career Coaching
-              </FooterLink>
-              <FooterLink to="/services/resume-building">
-                Resume Building
-              </FooterLink>
-            </ul>
-          </div>
+            ))}
+            {/* Example: Add a "Terms" link if not in MainRoutes and always needed */}
+            {/* {!MainRoutes.find(link => link.label.toLowerCase() === 'terms') && (
+              <FooterLink to="/terms">Terms</FooterLink>
+            )} */}
+          </nav>
 
-          {/* Fourth Column: Address and Social Media */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">Contact Us</h3>
-            <p className="mb-4">123 AI Street, Tech City, 12345</p>
-            <div className="flex gap-4">
-              <SocialLink
-                href="https://facebook.com"
-                icon={<Facebook size={24} />}
-                hoverColor="text-blue-500"
-              />
-              <SocialLink
-                href="https://twitter.com"
-                icon={<Twitter size={24} />}
-                hoverColor="text-blue-400"
-              />
-              <SocialLink
-                href="https://instagram.com"
-                icon={<Instagram size={24} />}
-                hoverColor="text-pink-500"
-              />
-              <SocialLink
-                href="https://linkedin.com"
-                icon={<Linkedin size={24} />}
-                hoverColor="text-blue-700"
-              />
-            </div>
-          </div>
+          <p className="mt-8 text-base leading-6 text-center text-gray-400">
+            © {currentYear} MockMentor. All rights reserved.
+          </p>
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
